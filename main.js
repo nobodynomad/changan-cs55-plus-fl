@@ -159,6 +159,9 @@ function updateStickyCta() {
   const isPastHeroButton = heroAction.getBoundingClientRect().bottom <= 0;
   const stickyTop = window.innerHeight - stickyCta.offsetHeight;
   const requestBounds = requestSection?.getBoundingClientRect();
+  const isLastSectionVisible = Boolean(
+    requestBounds && requestBounds.top < window.innerHeight * 0.55 && requestBounds.bottom > 0,
+  );
   const isOverDarkSection = Boolean(
     requestBounds && requestBounds.top < window.innerHeight && requestBounds.bottom > stickyTop,
   );
@@ -169,6 +172,7 @@ function updateStickyCta() {
   stickyCta.inert = !isPastHeroButton;
   stickyCta.querySelector("button").tabIndex = isPastHeroButton ? 0 : -1;
   document.body.classList.toggle("has-sticky-cta", isPastHeroButton);
+  document.body.classList.toggle("is-on-last-section", isLastSectionVisible);
 }
 
 window.addEventListener("scroll", updateStickyCta, { passive: true });

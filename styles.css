@@ -33,6 +33,10 @@ body {
     background: #fff;
   }
 
+  :root.is-on-last-section {
+    background: #0f1216;
+  }
+
   body {
     background: #fff;
   }

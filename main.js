@@ -152,6 +152,7 @@ document.querySelectorAll("[data-scroll-form]").forEach((button) => {
 const heroAction = document.querySelector(".hero-action");
 const stickyCta = document.querySelector(".sticky-cta");
 const requestSection = document.querySelector(".request-section");
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
 function updateStickyCta() {
   if (!heroAction || !stickyCta) return;
@@ -160,6 +161,7 @@ function updateStickyCta() {
   const stickyTop = window.innerHeight - stickyCta.offsetHeight;
   const requestBounds = requestSection?.getBoundingClientRect();
   const isLastSectionVisible = Boolean(
+    window.matchMedia("(max-width: 640px)").matches &&
     requestBounds && requestBounds.top < window.innerHeight * 0.55 && requestBounds.bottom > 0,
   );
   const isOverDarkSection = Boolean(
@@ -173,6 +175,12 @@ function updateStickyCta() {
   stickyCta.querySelector("button").tabIndex = isPastHeroButton ? 0 : -1;
   document.body.classList.toggle("has-sticky-cta", isPastHeroButton);
   document.body.classList.toggle("is-on-last-section", isLastSectionVisible);
+  document.documentElement.classList.toggle("is-on-last-section", isLastSectionVisible);
+
+  const browserEdgeColor = isLastSectionVisible ? "#0f1216" : "#ffffff";
+  if (themeColorMeta && themeColorMeta.content !== browserEdgeColor) {
+    themeColorMeta.content = browserEdgeColor;
+  }
 }
 
 window.addEventListener("scroll", updateStickyCta, { passive: true });

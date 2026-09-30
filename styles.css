@@ -50,6 +50,11 @@ body {
   body.is-on-last-section {
     background: #0f1216;
   }
+
+  .sticky-cta.is-on-dark {
+    bottom: calc(-18px - env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 button,
@@ -276,6 +281,12 @@ button {
 
 .sticky-cta.is-on-dark {
   background: linear-gradient(180deg, rgba(15, 18, 22, 0), rgba(15, 18, 22, 0.98) 34%);
+}
+
+@media (max-width: 640px) {
+  .sticky-cta.is-on-dark {
+    background: #0f1216;
+  }
 }
 
 .sticky-cta-button {

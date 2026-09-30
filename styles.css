@@ -1,8 +1,7 @@
 :root {
   font-family: "Montserrat", Arial, sans-serif;
   color: #111318;
-  --browser-chrome-color: #6b94bf;
-  background: #eef0f3;
+  background: #fff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -30,9 +29,12 @@ body {
 }
 
 @media (max-width: 640px) {
-  :root,
+  :root {
+    background: #fff;
+  }
+
   body {
-    background: var(--browser-chrome-color);
+    background: #0f1216;
   }
 }
 

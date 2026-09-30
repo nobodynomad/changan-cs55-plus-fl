@@ -150,25 +150,8 @@ document.querySelectorAll("[data-scroll-form]").forEach((button) => {
 });
 
 const heroAction = document.querySelector(".hero-action");
-const heroSection = document.querySelector(".hero");
 const stickyCta = document.querySelector(".sticky-cta");
 const requestSection = document.querySelector(".request-section");
-const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
-function updateBrowserChromeColor() {
-  const heroBounds = heroSection?.getBoundingClientRect();
-  const requestBounds = requestSection?.getBoundingClientRect();
-  const isHeroVisible = Boolean(
-    heroBounds && heroBounds.top < window.innerHeight * 0.2 && heroBounds.bottom > window.innerHeight * 0.8,
-  );
-  const isRequestVisible = Boolean(
-    requestBounds && requestBounds.top < window.innerHeight * 0.8 && requestBounds.bottom > window.innerHeight * 0.2,
-  );
-  const color = isRequestVisible ? "#0f1216" : isHeroVisible ? "#6b94bf" : "#f4f6f8";
-
-  document.documentElement.style.setProperty("--browser-chrome-color", color);
-  if (themeColorMeta && themeColorMeta.content !== color) themeColorMeta.content = color;
-}
 
 function updateStickyCta() {
   if (!heroAction || !stickyCta) return;
@@ -186,7 +169,6 @@ function updateStickyCta() {
   stickyCta.inert = !isPastHeroButton;
   stickyCta.querySelector("button").tabIndex = isPastHeroButton ? 0 : -1;
   document.body.classList.toggle("has-sticky-cta", isPastHeroButton);
-  updateBrowserChromeColor();
 }
 
 window.addEventListener("scroll", updateStickyCta, { passive: true });

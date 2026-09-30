@@ -1,6 +1,7 @@
 :root {
   font-family: "Montserrat", Arial, sans-serif;
   color: #111318;
+  --browser-chrome-color: #6b94bf;
   background: #eef0f3;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,6 +29,13 @@ body {
   background: #eef0f3;
 }
 
+@media (max-width: 640px) {
+  :root,
+  body {
+    background: var(--browser-chrome-color);
+  }
+}
+
 button,
 input,
 select {
@@ -41,7 +49,7 @@ button {
 .page-shell {
   position: relative;
   width: 100%;
-  max-width: 640px;
+  max-width: 440px;
   min-height: 100vh;
   margin: 0 auto;
   overflow: hidden;
@@ -119,8 +127,7 @@ button {
 
 .hero {
   position: relative;
-  height: auto;
-  aspect-ratio: 941 / 1672;
+  height: 600px;
   overflow: hidden;
   isolation: isolate;
   background: #527c9c;
@@ -129,11 +136,11 @@ button {
 .hero-image {
   position: absolute;
   z-index: -1;
-  top: 0;
+  top: -0.02%;
   left: 0;
   display: block;
   width: 100%;
-  height: 100%;
+  height: 106.61%;
   object-fit: cover;
   object-position: center top;
   animation: hero-arrive 1.25s cubic-bezier(0.2, 0.7, 0.25, 1) both;
@@ -141,7 +148,7 @@ button {
 
 .offer-panel {
   position: absolute;
-  top: 102px;
+  top: 120px;
   left: 16px;
   display: flex;
   width: calc(100% - 32px);
@@ -232,7 +239,7 @@ button {
   z-index: 30;
   bottom: 0;
   left: 50%;
-  width: min(640px, 100vw);
+  width: min(440px, 100vw);
   padding: 10px 16px calc(14px + env(safe-area-inset-bottom));
   background: linear-gradient(180deg, rgba(244, 246, 248, 0), rgba(244, 246, 248, 0.96) 34%);
   opacity: 0;
@@ -658,6 +665,14 @@ a:focus-visible {
 }
 
 @media (min-width: 361px) {
+  .hero {
+    height: 656px;
+  }
+
+  .offer-panel {
+    top: 160px;
+  }
+
   .page-shell {
     min-height: 100vh;
   }
